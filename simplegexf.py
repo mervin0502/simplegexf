@@ -312,7 +312,10 @@ class NodeAttributes(MutableMapping):
 
     @property
     def _attvalues(self):
-        return self.obj.data['attvalues']['attvalue']
+        _attvalue = self.obj.data['attvalues']['attvalue']
+        if type(_attvalue).__name__ != 'list':
+            _attvalue = [_attvalue]
+        return _attvalue
 
     @property
     def _mapped_attvalues(self):
